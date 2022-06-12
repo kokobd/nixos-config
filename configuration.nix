@@ -6,9 +6,9 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -16,7 +16,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nuc11-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -65,6 +65,13 @@
     #media-session.enable = true;
   };
 
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -87,14 +94,14 @@
     (
       vim_configurable.customize {
         name = "vim";
-	vimrcConfig.customRC = ''
-          filetype plugin indent on
-          set expandtab
-          set tabstop=2
-          set nu
-          set softtabstop=2
-          set shiftwidth=2
-	'';
+        vimrcConfig.customRC = ''
+                    filetype plugin indent on
+                    set expandtab
+                    set tabstop=2
+                    set nu
+                    set softtabstop=2
+                    set shiftwidth=2
+          	'';
       }
     )
     google-chrome
@@ -102,6 +109,8 @@
     git
     wget
     curl
+    nixpkgs-fmt
+    rnix-lsp
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -133,53 +142,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.users.kokobd = { pkgs, ...}: {
-    programs = {
-      bash.enable = true;
-      vscode = {
-        enable = true;
-        userSettings = {
-          "editor.fontSize" = 12;
-        };
-        extensions = with pkgs.vscode-extensions; [
-          bbenoist.nix
-          matklad.rust-analyzer
-          haskell.haskell
-          vscodevim.vim
-          arrterian.nix-env-selector
-        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            name = "vscode-leetcode";
-            publisher = "LeetCode";
-            version = "0.18.1";
-            sha256 = "Ym9Gi9nL0b5dJq0yXbX2NvSW89jIr3UFBAjfGT9BExM=";
-          } 
-        ];
-      };
-      git = {
-        enable = true;
-        userName = "kokobd";
-        userEmail = "contact@zelinf.net";
-        ignores = [ "*.swp" ".vscode/" ".idea/" ];
-      };
-      ssh = {
-        enable = true;
-        serverAliveInterval = 20;
-        serverAliveCountMax = 5;
-        matchBlocks = 
-          let identityFile = "/home/kokobd/.ssh/id_rsa";
-           in {
-                tencent = {
-                  hostname = "119.91.200.28";
-                  user = "ubuntu";
-                  identityFile = identityFile;
-                };
-              };
-      };
-    };
-  };
 
   services.autossh.sessions = [
     {
