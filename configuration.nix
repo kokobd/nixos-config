@@ -181,9 +181,12 @@
     };
   };
 
-  # services.autossh.sessions = {
-  #   {
-  #     user = "";
-  #   }
-  # };
+  services.autossh.sessions = [
+    {
+      name = "public";
+      user = "kokobd";
+      monitoringPort = 0;
+      extraArguments = "-N -R 10023:localhost:22 tencent";
+    }
+  ];
 }
