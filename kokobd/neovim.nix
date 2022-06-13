@@ -9,6 +9,7 @@
     set shiftwidth=2
     set autoindent
     set encoding=utf-8
+    set mouse=a
   '';
   plugins = with pkgs.vimPlugins; [
     {
