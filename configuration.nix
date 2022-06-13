@@ -112,6 +112,9 @@
     keepassxc
     nixfmt
     nerd-font-patcher
+    postman
+    htop
+    haskell.compiler.ghc922
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
