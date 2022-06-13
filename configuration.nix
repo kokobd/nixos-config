@@ -5,11 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -91,19 +90,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    (
-      vim_configurable.customize {
-        name = "vim";
-        vimrcConfig.customRC = ''
-                    filetype plugin indent on
-                    set expandtab
-                    set tabstop=2
-                    set nu
-                    set softtabstop=2
-                    set shiftwidth=2
-          	'';
-      }
-    )
+    (vim_configurable.customize {
+      name = "vim";
+      vimrcConfig.customRC = ''
+                  filetype plugin indent on
+                  set expandtab
+                  set tabstop=2
+                  set nu
+                  set softtabstop=2
+                  set shiftwidth=2
+        	'';
+    })
     google-chrome
     nodejs
     git
@@ -145,12 +142,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
 
-  services.autossh.sessions = [
-    {
-      name = "public";
-      user = "kokobd";
-      monitoringPort = 0;
-      extraArguments = "-N -R 10023:localhost:22 tencent";
-    }
-  ];
+  services.autossh.sessions = [{
+    name = "public";
+    user = "kokobd";
+    monitoringPort = 0;
+    extraArguments = "-N -R 10023:localhost:22 tencent";
+  }];
 }

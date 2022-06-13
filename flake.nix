@@ -7,9 +7,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager }:
-    let system = "x86_64-linux"; in
-    {
+  outputs = inputs@{ self, nixpkgs, home-manager }:
+    let system = "x86_64-linux";
+    in {
       nixosConfigurations = {
         nuc11-nixos = nixpkgs.lib.nixosSystem {
           inherit system;
