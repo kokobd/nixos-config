@@ -111,6 +111,7 @@
     rnix-lsp
     keepassxc
     nixfmt
+    nerd-font-patcher
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
