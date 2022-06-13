@@ -22,7 +22,7 @@
               config.home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.kokobd = import ./kokobd.nix;
+                users.kokobd = import ./kokobd;
               };
             }
           ];
