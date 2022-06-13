@@ -30,6 +30,7 @@
         haskell.haskell
         vscodevim.vim
         arrterian.nix-env-selector
+        mhutchie.git-graph
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-leetcode";
