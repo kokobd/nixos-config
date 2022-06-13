@@ -111,6 +111,8 @@
     curl
     nixpkgs-fmt
     rnix-lsp
+    keepassxc
+    nixfmt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
