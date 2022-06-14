@@ -25,7 +25,13 @@
           tencent = {
             hostname = "119.91.200.28";
             user = "ubuntu";
-            identityFile = identityFile;
+            inherit identityFile;
+          };
+          home = {
+            hostname = "119.91.200.28";
+            user = "kokobd";
+            port = 10022;
+            inherit identityFile;
           };
         };
     };

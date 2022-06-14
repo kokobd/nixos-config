@@ -11,11 +11,11 @@
   ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostName = "nuc11-nixos"; # Define your hostname.
+  networking.hostName = "nuc11"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -151,6 +151,6 @@
     name = "public";
     user = "kokobd";
     monitoringPort = 0;
-    extraArguments = "-N -R 10023:localhost:22 tencent";
+    extraArguments = "-N -R 10022:localhost:22 tencent";
   }];
 }

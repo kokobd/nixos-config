@@ -11,7 +11,7 @@
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
-        nuc11-nixos = nixpkgs.lib.nixosSystem {
+        nuc11 = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
