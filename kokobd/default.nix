@@ -16,8 +16,8 @@
     };
     ssh = {
       enable = true;
-      serverAliveInterval = 20;
-      serverAliveCountMax = 5;
+      serverAliveInterval = 10;
+      serverAliveCountMax = 10;
       matchBlocks =
         let identityFile = "/home/kokobd/.ssh/id_rsa";
         in

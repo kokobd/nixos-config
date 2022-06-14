@@ -111,11 +111,19 @@
     rnix-lsp
     keepassxc
     nixfmt
-    nerd-font-patcher
     postman
     htop
     haskell.compiler.ghc922
+    gnome.gnome-tweaks
+    screen
+    lm_sensors
+    nload
   ];
+
+	fonts.fonts = with pkgs; [
+		nerdfonts
+	  # (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+	];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -153,4 +161,11 @@
     monitoringPort = 0;
     extraArguments = "-N -R 10022:localhost:22 tencent";
   }];
+  
+	systemd.targets = {
+		sleep.enable = false;
+		suspend.enable = false;
+		hibernate.enable = false;
+		hybrid-sleep.enable = false;
+	};
 }
