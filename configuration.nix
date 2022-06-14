@@ -69,6 +69,16 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    settings = {
+      trusted-public-keys = [
+        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      extra-substituters = [
+        "https://cache.iog.io"
+        "https://nix-community.cachix.org"
+      ];
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -118,6 +128,8 @@
     screen
     lm_sensors
     nload
+    cachix
+    file
   ];
 
 	fonts.fonts = with pkgs; [
