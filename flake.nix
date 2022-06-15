@@ -5,9 +5,11 @@
     nixpkgs.url = "nixpkgs/nixos-22.05";
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nixpkgs, home-manager, agenix }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -16,6 +18,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./configuration.nix
+            agenix.nixosModule
 
             home-manager.nixosModules.home-manager
             {

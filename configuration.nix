@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -128,6 +128,9 @@
     nload
     cachix
     file
+    openssl
+    inputs.agenix.defaultPackage.x86_64-linux
+    rage
   ];
 
   fonts.fonts = with pkgs;
@@ -143,6 +146,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.vim.defaultEditor = true;
 
   # List services that you want to enable:
 
