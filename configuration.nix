@@ -74,10 +74,8 @@
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-      extra-substituters = [
-        "https://cache.iog.io"
-        "https://nix-community.cachix.org"
-      ];
+      extra-substituters =
+        [ "https://cache.iog.io" "https://nix-community.cachix.org" ];
     };
   };
 
@@ -132,10 +130,11 @@
     file
   ];
 
-	fonts.fonts = with pkgs; [
-		nerdfonts
-	  # (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-	];
+  fonts.fonts = with pkgs;
+    [
+      nerdfonts
+      # (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -173,11 +172,11 @@
     monitoringPort = 0;
     extraArguments = "-N -R 10022:localhost:22 tencent";
   }];
-  
-	systemd.targets = {
-		sleep.enable = false;
-		suspend.enable = false;
-		hibernate.enable = false;
-		hybrid-sleep.enable = false;
-	};
+
+  systemd.targets = {
+    sleep.enable = false;
+    suspend.enable = false;
+    hibernate.enable = false;
+    hybrid-sleep.enable = false;
+  };
 }

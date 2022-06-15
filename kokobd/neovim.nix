@@ -10,8 +10,12 @@
     set autoindent
     set encoding=utf-8
     set mouse=a
+
+    set guifont=Source_Code_Pro:h10
+    let g:neovide_remember_window_size = v:true
   '';
   plugins = with pkgs.vimPlugins; [
+    { plugin = coc-rust-analyzer; }
     {
       plugin = nvim-tree-lua;
       type = "lua";
@@ -33,9 +37,9 @@
         " NvimTreeResize
         " NvimTreeCollapse
         " NvimTreeCollapseKeepBuffers
-    
-        " set termguicolors "this variable must be enabled for colors to be applied properly
-    
+
+        set termguicolors "this variable must be enabled for colors to be applied properly
+
         " a list of groups can be found at `:help nvim_tree_highlight`
         highlight NvimTreeFolderIcon guibg=blue
         ]], true)
@@ -51,6 +55,19 @@
           command = "rnix-lsp";
           filetypes = [ "nix" ];
         };
+
+        haskell = {
+          command = "haskell-language-server";
+          args = [ "--lsp" ];
+          rootPatterns = [ "stack.yaml" "cabal.project" "package.yaml" ];
+          filetypes = [ "hs" "lhs" "haskell" ];
+        };
+      };
+      rust-analyzer = {
+        enable = true;
+        server.path = "rust-analyzer";
+        updates.checkOnStartup = false;
+        hover.documentation.enable = true;
       };
     };
 
