@@ -186,5 +186,5 @@
     hybrid-sleep.enable = false;
   };
 
-  age = import ./age.nix;
+  age = import ./age.nix { lib = pkgs.lib; };
 }

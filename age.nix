@@ -1,19 +1,28 @@
-{
-  secrets = {
-    "passwords.kdbx" = {
-      file = ./secrets/passwords.kdbx.age;
-      path = "/home/kokobd/Documents/passwords.kdbx";
+{ lib }:
+let
+  mergeAttrs = lib.attrsets.foldAttrs (val: col: val) 0;
+
+  mkUserSecret = { name, dir }:
+    lib.attrsets.setAttrByPath [ name ] {
+      file = ./secrets + "/${name}.age";
+      path = "/home/kokobd/${dir}/${name}";
       owner = "kokobd";
     };
-    "passwords.key" = {
-      file = ./secrets/passwords.key.age;
-      path = "/home/kokobd/Documents/passwords.key";
-      owner = "kokobd";
-    };
-    "id_ed25519" = {
-      file = ./secrets/id_ed25519.age;
-      path = "/home/kokobd/.ssh/id_ed25519";
-      owner = "kokobd";
-    };
-  };
+
+  mkUserSecrets = secrets: mergeAttrs (map mkUserSecret secrets);
+in {
+  secrets = mkUserSecrets [
+    {
+      name = "passwords.kdbx";
+      dir = "Documents";
+    }
+    {
+      name = "passwords.key";
+      dir = "Documents";
+    }
+    {
+      name = "id_ed25519";
+      dir = ".ssh";
+    }
+  ];
 }
