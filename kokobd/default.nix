@@ -17,6 +17,11 @@
       serverAliveCountMax = 10;
       matchBlocks = let identityFile = "/home/kokobd/.ssh/id_rsa";
       in {
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "/home/kokobd/.ssh/id_ed25519";
+        };
         tencent = {
           hostname = "119.91.200.28";
           user = "ubuntu";

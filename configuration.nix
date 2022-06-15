@@ -131,6 +131,8 @@
     openssl
     inputs.agenix.defaultPackage.x86_64-linux
     rage
+    unzip
+    zip
   ];
 
   fonts.fonts = with pkgs;
@@ -183,4 +185,6 @@
     hibernate.enable = false;
     hybrid-sleep.enable = false;
   };
+
+  age = import ./age.nix;
 }
