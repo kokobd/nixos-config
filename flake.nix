@@ -13,11 +13,12 @@
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
-        nuc11 = nixpkgs.lib.nixosSystem {
+        kokobd-desktop = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
             ./configuration.nix
+            ./gpg.nix
             agenix.nixosModule
 
             home-manager.nixosModules.home-manager

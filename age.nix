@@ -24,5 +24,9 @@ in {
       name = "id_ed25519";
       dir = ".ssh";
     }
+    {
+      name = "private.gpg";
+      dir = "Documents";
+    }
   ];
 }
