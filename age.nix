@@ -1,5 +1,7 @@
-{ lib }:
+{ pkgs, ... }:
 let
+  lib = pkgs.lib;
+
   mergeAttrs = lib.attrsets.foldAttrs (val: col: val) 0;
 
   mkUserSecret = { name, dir }:
@@ -10,23 +12,26 @@ let
     };
 
   mkUserSecrets = secrets: mergeAttrs (map mkUserSecret secrets);
-in {
-  secrets = mkUserSecrets [
-    {
-      name = "passwords.kdbx";
-      dir = "Documents";
-    }
-    {
-      name = "passwords.key";
-      dir = "Documents";
-    }
-    {
-      name = "id_ed25519";
-      dir = ".ssh";
-    }
-    {
-      name = "private.gpg";
-      dir = "Documents";
-    }
-  ];
+in
+{
+  age = {
+    secrets = mkUserSecrets [
+      {
+        name = "passwords.kdbx";
+        dir = "Documents";
+      }
+      {
+        name = "passwords.key";
+        dir = "Documents";
+      }
+      {
+        name = "id_ed25519";
+        dir = ".ssh";
+      }
+      {
+        name = "private.gpg";
+        dir = "Documents";
+      }
+    ];
+  };
 }

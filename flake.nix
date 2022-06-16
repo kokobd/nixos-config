@@ -17,8 +17,15 @@
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
+            ./hardware-configuration.nix
+            ./bootloader.nix
             ./configuration.nix
             ./gpg.nix
+            ./users.nix
+            ./nixtool.nix
+            ./packages.nix
+            ./sleep.nix
+            ./age.nix
             agenix.nixosModule
 
             home-manager.nixosModules.home-manager
