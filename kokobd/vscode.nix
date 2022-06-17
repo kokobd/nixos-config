@@ -19,11 +19,12 @@
     "nix.formatterPath" = "nixfmt";
     "workbench.colorTheme" = "Default Dark+";
     "leetcode.workspaceFolder" =
-      "/home/kobayashi/work/github.com/kokobd/leetcode-rs/src";
+      "/home/kokobd/work/github.com/kokobd/leetcode-rs/src";
     "leetcode.defaultLanguage" = "rust";
   };
   extensions = with pkgs.vscode-extensions;
     [
+      eamodio.gitlens
       bbenoist.nix
       jnoortheen.nix-ide
       matklad.rust-analyzer

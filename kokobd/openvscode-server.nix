@@ -57,7 +57,8 @@ in {
 
   config = mkIf cfg.enable {
     assertions = [
-      (hm.assertions.assertPlatform "services.openvscode-server" pkgs platforms.linux)
+      (hm.assertions.assertPlatform "services.openvscode-server" pkgs
+        platforms.linux)
     ];
 
     programs.${cfg.shell}.enable = true;
