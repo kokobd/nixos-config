@@ -17,12 +17,11 @@
       nixosvmtest = {
         isNormalUser = true;
         group = "nixosvmtest";
-        initialHashedPassword = "$6$30hxpNJ41Xr5.3s4$DsUQi9zpqTp7YMD4.sGs4T3gduJ.1RqWjel7wEKnY2WCwgx6KhyljuRB3UnEL0nzms7m7.p.p/5bGTnnV.waq1";
+        initialHashedPassword =
+          "$6$30hxpNJ41Xr5.3s4$DsUQi9zpqTp7YMD4.sGs4T3gduJ.1RqWjel7wEKnY2WCwgx6KhyljuRB3UnEL0nzms7m7.p.p/5bGTnnV.waq1";
       };
     };
-    groups = {
-      nixosvmtest = { };
-    };
+    groups = { nixosvmtest = { }; };
   };
 }
 

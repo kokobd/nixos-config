@@ -12,8 +12,7 @@ let
     };
 
   mkUserSecrets = secrets: mergeAttrs (map mkUserSecret secrets);
-in
-{
+in {
   age = {
     secrets = mkUserSecrets [
       {

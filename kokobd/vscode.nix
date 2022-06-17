@@ -15,7 +15,7 @@
     "nix.enableLanguageServer" = true;
     "[json]" = { "editor.tabSize" = 2; };
     "[nix]" = { "editor.tabSize" = 2; };
-    "nix.formatterPath" = "nixpkgs-fmt";
+    "nix.formatterPath" = "nixfmt";
     "workbench.colorTheme" = "Default Dark+";
   };
   extensions = with pkgs.vscode-extensions;

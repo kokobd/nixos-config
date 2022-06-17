@@ -78,7 +78,7 @@
 
     pluginConfig = ''
       " highlight CocFloating ctermbg=None
-    
+
       " TextEdit might fail if hidden is not set.
       set hidden
 
