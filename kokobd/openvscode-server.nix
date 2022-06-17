@@ -28,6 +28,14 @@ in {
     services.openvscode-server = {
       enable = mkEnableOption "Open VSCode Server";
 
+      shell = mkOption {
+        type = types.str;
+        default = "bash";
+        description = ''
+          Specify which shell program openvscode-server should use.
+        '';
+      };
+
       host = mkOption {
         type = types.str;
         default = "localhost";
@@ -49,9 +57,10 @@ in {
 
   config = mkIf cfg.enable {
     assertions = [
-      (hm.assertions.assertPlatform "services.openvscode-server" pkgs
-        platforms.linux)
+      (hm.assertions.assertPlatform "services.openvscode-server" pkgs platforms.linux)
     ];
+
+    programs.${cfg.shell}.enable = true;
 
     systemd.user.services.openvscode-server = {
       Unit = { Description = "Open VSCode Server"; };
@@ -60,7 +69,7 @@ in {
 
       Service = let
         wrapper = pkgs.writeScriptBin "wrapper" ''
-          #!${pkgs.bash}/bin/bash
+          #!${pkgs."${cfg.shell}"}/bin/${cfg.shell}
 
           ${pkgs.nodejs-14_x}/bin/node "${pkgs.openvscode-server}/out/server-main.js" \
             --port ${cfg.port} \
