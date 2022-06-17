@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  imports = [ ./openvscode-server.nix ];
+
   home.packages = with pkgs; [ neovide ];
   programs = {
     bash.enable = true;
@@ -33,7 +35,18 @@
           port = 10022;
           inherit identityFile;
         };
+        home-gateway = {
+          hostname = "192.168.31.2";
+          user = "pi";
+          inherit identityFile;
+        };
       };
     };
+  };
+
+  services.openvscode-server = {
+    enable = true;
+    host = "0.0.0.0";
+    port = "3000";
   };
 }

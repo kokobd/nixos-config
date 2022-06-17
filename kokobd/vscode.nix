@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   enable = true;
+  mutableExtensionsDir = false;
   userSettings = {
     "editor.fontSize" = 12;
     "editor.minimap.enabled" = false;
@@ -15,6 +16,7 @@
     "[json]" = { "editor.tabSize" = 2; };
     "[nix]" = { "editor.tabSize" = 2; };
     "nix.formatterPath" = "nixpkgs-fmt";
+    "workbench.colorTheme" = "Default Dark+";
   };
   extensions = with pkgs.vscode-extensions;
     [

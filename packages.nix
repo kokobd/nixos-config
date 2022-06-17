@@ -46,6 +46,7 @@
     zip
     gnupg
     pinentry
+    lsof
   ];
 }
 

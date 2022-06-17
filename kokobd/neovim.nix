@@ -13,6 +13,7 @@
 
     set guifont=Source_Code_Pro:h10
     let g:neovide_remember_window_size = v:true
+
   '';
   plugins = with pkgs.vimPlugins; [
     { plugin = coc-rust-analyzer; }
@@ -65,13 +66,19 @@
       };
       rust-analyzer = {
         enable = true;
-        server.path = "rust-analyzer";
-        updates.checkOnStartup = false;
-        hover.documentation.enable = true;
+        "server.path" = "rust-analyzer";
+        "updates.checkOnStartup" = false;
+        "hover.documentation.enable" = true;
+      };
+      "suggest.floatConfig" = {
+        border = true;
+        rounded = true;
       };
     };
 
     pluginConfig = ''
+      " highlight CocFloating ctermbg=None
+    
       " TextEdit might fail if hidden is not set.
       set hidden
 
