@@ -2,6 +2,8 @@
   enable = true;
   mutableExtensionsDir = false;
   userSettings = {
+    "update.mode" = "none";
+    "extensions.autoUpdate" = false;
     "editor.fontSize" = 12;
     "editor.minimap.enabled" = false;
     "editor.tabSize" = 4;
