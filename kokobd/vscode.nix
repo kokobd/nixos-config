@@ -7,6 +7,7 @@
     "editor.tabSize" = 4;
     "editor.insertSpaces" = true;
     "editor.rulers" = [ 120 ];
+    "editor.smoothScrolling" = true;
     "workbench.startupEditor" = "none";
     "explorer.confirmDelete" = false;
     "explorer.confirmDragAndDrop" = false;
@@ -17,6 +18,9 @@
     "[nix]" = { "editor.tabSize" = 2; };
     "nix.formatterPath" = "nixfmt";
     "workbench.colorTheme" = "Default Dark+";
+    "leetcode.workspaceFolder" =
+      "/home/kobayashi/work/github.com/kokobd/leetcode-rs/src";
+    "leetcode.defaultLanguage" = "rust";
   };
   extensions = with pkgs.vscode-extensions;
     [

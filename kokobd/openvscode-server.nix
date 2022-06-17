@@ -12,22 +12,16 @@ let
     "vscode-insiders" = "Code - Insiders";
     "vscodium" = "VSCodium";
   }.${vscodePname};
+  userDir = "${config.xdg.configHome}/${configDir}/User";
+  configFilePath = "${userDir}/settings.json";
+  tasksFilePath = "${userDir}/tasks.json";
+  keybindingsFilePath = "${userDir}/keybindings.json";
 
   extensionDir = {
     "vscode" = "vscode";
     "vscode-insiders" = "vscode-insiders";
     "vscodium" = "vscode-oss";
   }.${vscodePname};
-
-  userDir = if pkgs.stdenv.hostPlatform.isDarwin then
-    "Library/Application Support/${configDir}/User"
-  else
-    "${config.xdg.configHome}/${configDir}/User";
-
-  configFilePath = "${userDir}/settings.json";
-  tasksFilePath = "${userDir}/tasks.json";
-  keybindingsFilePath = "${userDir}/keybindings.json";
-
   extensionPath = ".${extensionDir}/extensions";
 in {
   options = {
@@ -54,6 +48,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    assertions = [
+      (hm.assertions.assertPlatform "services.openvscode-server" pkgs
+        platforms.linux)
+    ];
+
     systemd.user.services.openvscode-server = {
       Unit = { Description = "Open VSCode Server"; };
 
@@ -63,16 +62,13 @@ in {
         wrapper = pkgs.writeScriptBin "wrapper" ''
           #!${pkgs.bash}/bin/bash
 
-          "${pkgs.nodejs-14_x}/bin/node" "${pkgs.openvscode-server}/out/server-main.js" \
+          ${pkgs.nodejs-14_x}/bin/node "${pkgs.openvscode-server}/out/server-main.js" \
             --port ${cfg.port} \
             --host ${cfg.host} \
             --without-connection-token \
             --server-data-dir=${config.home.homeDirectory}/.openvscode-server
         '';
       in {
-        Environment = [
-          "PATH=${config.home.profileDirectory}/bin:/run/current-system/sw/bin"
-        ];
         ExecStart = "${wrapper}/bin/wrapper";
         Restart = "on-failure";
       };
