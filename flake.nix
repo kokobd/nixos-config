@@ -26,6 +26,7 @@
             ./packages.nix
             ./sleep.nix
             ./age.nix
+            ./networking.nix
             agenix.nixosModule
 
             home-manager.nixosModules.home-manager

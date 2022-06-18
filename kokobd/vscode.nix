@@ -34,6 +34,7 @@
       vscodevim.vim
       arrterian.nix-env-selector
       mhutchie.git-graph
+      editorconfig.editorconfig
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
       name = "vscode-leetcode";
       publisher = "LeetCode";
