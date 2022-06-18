@@ -32,7 +32,6 @@
     nixfmt
     postman
     htop
-    haskell.compiler.ghc922
     gnome.gnome-tweaks
     screen
     lm_sensors
