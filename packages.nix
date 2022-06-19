@@ -46,15 +46,6 @@
     gnupg
     pinentry
     lsof
-    haskell.compiler.ghc8107
-    haskell.compiler.ghc902
-    haskell.compiler.ghc923
-    haskell.compiler.ghcHEAD
-    cabal-install
-    stack
-    pre-commit
-    stylish-haskell
-    haskellPackages.hoogle
   ];
 }
 
