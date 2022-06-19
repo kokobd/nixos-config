@@ -3,7 +3,6 @@
 
   home.packages = with pkgs; [
     neovide
-    haskell.compiler.ghc8107
   ];
   programs = {
     bash.enable = true;
