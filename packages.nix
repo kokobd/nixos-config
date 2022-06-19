@@ -53,6 +53,8 @@
     cabal-install
     stack
     pre-commit
+    stylish-haskell
+    haskellPackages.hoogle
   ];
 }
 
