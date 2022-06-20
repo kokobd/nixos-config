@@ -12,6 +12,7 @@
         gcc
         zlib.dev
         gmp.dev
+        python
         haskell.compiler.ghc923
         haskell.compiler.ghc902
         haskell.compiler.ghc8107
