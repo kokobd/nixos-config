@@ -1,9 +1,7 @@
 { pkgs, ... }: {
-  imports = [ ./openvscode-server.nix ./ssh.nix ];
+  imports = [ ./openvscode-server.nix ./ssh.nix ./fhs.nix ];
 
-  home.packages = with pkgs; [
-    neovide
-  ];
+  home.packages = with pkgs; [ openvscode-server ];
   programs = {
     bash.enable = true;
     vscode = import ./vscode.nix { inherit pkgs; };
