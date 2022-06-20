@@ -31,6 +31,7 @@
       jnoortheen.nix-ide
       matklad.rust-analyzer
       haskell.haskell
+      justusadam.language-haskell
       vscodevim.vim
       arrterian.nix-env-selector
       mhutchie.git-graph

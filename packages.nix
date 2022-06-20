@@ -46,6 +46,7 @@
     gnupg
     pinentry
     lsof
+    nix-prefetch-git
   ];
 }
 
