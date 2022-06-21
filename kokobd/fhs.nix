@@ -6,7 +6,7 @@
   home.file.".fhs.nix".text = ''
     { pkgs ? import <nixpkgs> { } }:
     (pkgs.buildFHSUserEnv {
-      name = "hls-dev-env";
+      name = "global";
       targetPkgs = pkgs: with pkgs; [
         coreutils
         gcc
