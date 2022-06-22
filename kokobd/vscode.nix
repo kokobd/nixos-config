@@ -23,6 +23,7 @@
     "leetcode.workspaceFolder" =
       "/home/kokobd/work/github.com/kokobd/leetcode-rs/src";
     "leetcode.defaultLanguage" = "rust";
+    "haskell.plugin.ghcide-completions.config.snippetsOn" = false;
   };
   extensions = with pkgs.vscode-extensions;
     [
