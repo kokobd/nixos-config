@@ -1,6 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  imports = [ ./nuc11-hardware.nix ../modules/graphical.nix ];
+
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    efi.efiSysMountPoint = "/boot/efi";
+  };
+
   networking = {
     hostName = "kokobd-desktop";
     networkmanager.enable = true;

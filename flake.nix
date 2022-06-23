@@ -9,26 +9,14 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, agenix }:
-    let system = "x86_64-linux";
-    in {
-      nixosConfigurations = {
-        kokobd-desktop = nixpkgs.lib.nixosSystem {
+  outputs = inputs@{ self, nixpkgs, home-manager, agenix }: {
+    nixosConfigurations = let
+      buildMachine = { system, module }:
+        nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            ./hardware-configuration.nix
-            ./bootloader.nix
-            ./configuration.nix
-            ./gpg.nix
-            ./users.nix
-            ./nixtool.nix
-            ./packages.nix
-            ./sleep.nix
-            ./age.nix
-            ./networking.nix
-            agenix.nixosModule
-
+            module
             home-manager.nixosModules.home-manager
             {
               config.home-manager = {
@@ -39,6 +27,16 @@
             }
           ];
         };
+    in {
+      kokobd-desktop = buildMachine {
+        system = "x86_64-linux";
+        module = ./machines/nuc11.nix;
+      };
+
+      aws-ec2 = buildMachine {
+        system = "x86_64-linux";
+        module = ./machines/aws-ec2.nix;
       };
     };
+  };
 }
