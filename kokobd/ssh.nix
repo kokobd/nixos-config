@@ -30,8 +30,8 @@
           inherit identityFile;
         };
         aws = {
-          hostname = "54.81.218.72";
-          user = "root";
+          hostname = "44.207.217.188";
+          user = "kokobd";
           identityFile = "/home/kokobd/.ssh/id_ed25519";
         };
       };
