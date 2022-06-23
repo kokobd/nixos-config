@@ -29,6 +29,11 @@
           user = "pi";
           inherit identityFile;
         };
+        aws = {
+          hostname = "54.81.218.72";
+          user = "root";
+          identityFile = "/home/kokobd/.ssh/id_ed25519";
+        };
       };
     };
   };

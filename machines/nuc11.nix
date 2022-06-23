@@ -10,7 +10,7 @@
   };
 
   networking = {
-    hostName = "kokobd-desktop";
+    hostName = "nuc11";
     networkmanager.enable = true;
     firewall.enable = false;
 
