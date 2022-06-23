@@ -28,7 +28,7 @@
           ];
         };
     in {
-      kokobd-desktop = buildMachine {
+      nuc11 = buildMachine {
         system = "x86_64-linux";
         module = ./machines/nuc11.nix;
       };
