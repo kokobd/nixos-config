@@ -45,6 +45,9 @@
     pinentry
     lsof
     nix-prefetch-git
+    pre-commit
+    stylish-haskell
+    sysbench
   ];
 
   systemd.targets = {

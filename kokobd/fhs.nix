@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  compilers = [ "ghc884" "ghc8107" "ghc902" "ghc923" ];
+  compilers = [ "ghc865Binary" "ghc884" "ghc8107" "ghc902" "ghc923" ];
   mkShellAlias = compiler: {
     name = "fhs-${compiler}";
     value = "nix-shell ${config.home.homeDirectory}/.fhs-${compiler}.nix";
@@ -15,9 +15,11 @@ let
           name = "global";
           targetPkgs = pkgs: with pkgs; [
             coreutils
+            binutils
             gcc
             zlib.dev
             gmp.dev
+            ncurses.dev
             python
             haskell.compiler.${compiler}
             cabal-install
