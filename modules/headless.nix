@@ -48,6 +48,7 @@
     pre-commit
     stylish-haskell
     sysbench
+    stress-ng
   ];
 
   systemd.targets = {
