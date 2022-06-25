@@ -5,6 +5,10 @@
     port = "3000";
   };
 
+  programs.bash.shellAliases = {
+    "code-server" = "openvscode-server --without-connection-token --host 0.0.0.0";
+  };
+
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
