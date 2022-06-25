@@ -5,7 +5,10 @@
       userName = "kokobd";
       userEmail = "contact@zelinf.net";
       ignores = [ "*.swp" ".vscode/" ".idea/" ];
-      extraConfig = { core = { editor = "vim"; }; };
+      extraConfig = {
+        core = { editor = "vim"; };
+        pull = { rebase = false; };
+      };
     };
   };
 }
