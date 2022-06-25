@@ -2,12 +2,20 @@
 
 My personal NixOS config
 
-To apply this to a fresh NixOS instance, the following steps must be applied in order:
+## Apply to a Fresh NixOS Installation
 
-1. Copy `nix = ` from `configuration.nix` to the new system's `configuration.nix`, and
-  apply it to the system. This enables `nix flake`
-2. Copy all files from this repo into /etc/nixos, excluding `.git`,
-  `hardware-configuration.nix`, and `boot.loader` (in `configuration.nix`)
-3. Run `sudo nixos-rebuild switch .#nuc11` (specify the host name explicitly)
-4. Now the configurations are fully applied, subsequent calls to `nixos-rebuild` should
-  work normally.
+1. Add the new machine to `machines` folder in this repo if needed
+2. Install the host ssh key into `/etc/ssh/ssh_host_ed25519_key`
+3. Run script below. (change environment variables accordingly)
+
+```sh
+export HOST=nuc11
+
+sudo su
+rm /etc/nix/nix.conf
+echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+mv /etc/nixos /etc/nixos.bak
+cd /etc
+nix-shell --package git --command "git clone https://github.com/kokobd/nixos-config.git"
+nixos-rebuild switch --flake .#HOST
+```
