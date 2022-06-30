@@ -48,11 +48,19 @@
         arrterian.nix-env-selector
         mhutchie.git-graph
         editorconfig.editorconfig
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-        name = "vscode-leetcode";
-        publisher = "LeetCode";
-        version = "0.18.1";
-        sha256 = "Ym9Gi9nL0b5dJq0yXbX2NvSW89jIr3UFBAjfGT9BExM=";
-      }];
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "vscode-leetcode";
+          publisher = "LeetCode";
+          version = "0.18.1";
+          sha256 = "Ym9Gi9nL0b5dJq0yXbX2NvSW89jIr3UFBAjfGT9BExM=";
+        }
+        {
+          name = "resourcemonitor";
+          publisher = "mutantdino";
+          version = "1.0.7";
+          sha256 = "zxh1sre+eakKSV0dCXUwtE/NNFKy6MhhP6AzHNBQuA0=";
+        }
+      ];
   };
 }

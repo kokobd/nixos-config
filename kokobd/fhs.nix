@@ -29,6 +29,7 @@ let
             stylish-haskell
             pre-commit
           ];
+          profile = "export PATH=~/.cabal/bin:~/.local/bin:$PATH";
         }).env
       '';
     };
