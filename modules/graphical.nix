@@ -52,4 +52,10 @@
     postman
     gnome.gnome-tweaks
   ];
+
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+  };
+  users.extraGroups.vboxusers.members = [ "kokobd" ];
 }

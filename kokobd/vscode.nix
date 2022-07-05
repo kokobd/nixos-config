@@ -35,6 +35,9 @@
         "/home/kokobd/work/github.com/kokobd/leetcode-rs/src";
       "leetcode.defaultLanguage" = "rust";
       "haskell.plugin.ghcide-completions.config.snippetsOn" = false;
+      "vim.handleKeys" = {
+        "<C-f>" = false;
+      };
     };
     extensions = with pkgs.vscode-extensions;
       [
@@ -48,6 +51,7 @@
         arrterian.nix-env-selector
         mhutchie.git-graph
         editorconfig.editorconfig
+        usernamehw.errorlens
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-leetcode";
