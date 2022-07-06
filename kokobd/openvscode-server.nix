@@ -23,7 +23,8 @@ let
     "vscodium" = "vscode-oss";
   }.${vscodePname};
   extensionPath = ".${extensionDir}/extensions";
-in {
+in
+{
   options = {
     services.openvscode-server = {
       enable = mkEnableOption "Open VSCode Server";
@@ -52,6 +53,19 @@ in {
           format num-num is passed, a free port from the range (end inclusive) is selected.
         '';
       };
+
+      rev = mkOption {
+        type = types.str;
+        description = ''
+          Revision for nix-shell
+        '';
+      };
+
+      packages = mkOption {
+        type = types.listOf types.str;
+        default = [ ];
+        description = "List of packages enabled in openvscode-server";
+      };
     };
   };
 
@@ -68,20 +82,24 @@ in {
 
       Install.WantedBy = [ "default.target" ];
 
-      Service = let
-        wrapper = pkgs.writeScriptBin "wrapper" ''
-          #!${pkgs."${cfg.shell}"}/bin/${cfg.shell}
+      Service =
+        let
+          wrapper = pkgs.writeScriptBin "openvscode-server-wrapper" ''
+            #!/usr/bin/env nix-shell 
+            #!nix-shell -i ${cfg.shell} -p ${strings.concatStringsSep " " cfg.packages}
+            #! nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/${cfg.rev}.tar.gz
 
-          ${pkgs.nodejs-14_x}/bin/node "${pkgs.openvscode-server}/out/server-main.js" \
-            --port ${cfg.port} \
-            --host ${cfg.host} \
-            --without-connection-token \
-            --server-data-dir=${config.home.homeDirectory}/.openvscode-server
-        '';
-      in {
-        ExecStart = "${wrapper}/bin/wrapper";
-        Restart = "on-failure";
-      };
+            ${pkgs.nodejs-14_x}/bin/node ${pkgs.openvscode-server}/out/server-main.js \
+              --port ${cfg.port} \
+              --host ${cfg.host} \
+              --without-connection-token \
+              --server-data-dir=${config.home.homeDirectory}/.openvscode-server
+          '';
+        in
+        {
+          ExecStart = "${wrapper}/bin/openvscode-server-wrapper";
+          Restart = "on-failure";
+        };
     };
 
     home.file = {

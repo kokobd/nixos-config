@@ -1,8 +1,31 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   services.openvscode-server = {
     enable = true;
     host = "0.0.0.0";
     port = "3000";
+
+    rev = inputs.nixpkgs.rev;
+    packages = [
+      "coreutils"
+      "binutils"
+      "gcc"
+      "zlib.dev"
+      "gmp.dev"
+      "ncurses.dev"
+      "python"
+      "haskell.compiler.ghc865Binary"
+      "haskell.compiler.ghc884"
+      "haskell.compiler.ghc8107"
+      "haskell.compiler.ghc902"
+      "haskell.compiler.ghc923"
+      "haskell.compiler.ghcHEAD"
+      "cabal-install"
+      "stack"
+      "haskellPackages.hoogle"
+      "haskellPackages.implicit-hie"
+      "stylish-haskell"
+      "pre-commit"
+    ];
   };
 
   programs.bash.shellAliases = {
