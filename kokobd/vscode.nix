@@ -37,6 +37,8 @@
       "leetcode.defaultLanguage" = "rust";
       "haskell.plugin.ghcide-completions.config.snippetsOn" = false;
       "vim.handleKeys" = { "<C-f>" = false; };
+
+      "typescript.tsc.autoDetect" = "off";
     };
     extensions = with pkgs.vscode-extensions;
       [
