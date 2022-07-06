@@ -23,6 +23,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.kokobd = import ./kokobd;
+                extraSpecialArgs = { inherit inputs; };
               };
             }
           ];

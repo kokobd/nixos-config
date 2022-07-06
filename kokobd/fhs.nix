@@ -1,12 +1,18 @@
-{ config, pkgs, ... }:
-
-{
-  programs.bash.shellAliases.fhs = "nix-shell ${config.home.homeDirectory}/fhs.nix";
+{ config, pkgs, inputs, ... }:
+let rev = inputs.nixpkgs.rev;
+in {
+  programs.bash.shellAliases.fhs =
+    "nix-shell ${config.home.homeDirectory}/fhs.nix";
 
   home.file = {
     "fhs.nix" = {
       text = ''
-        { pkgs ? import <nixpkgs> { } }:
+        { pkgs ? import (builtins.fetchTarball {
+            name = "nixpkgs";
+            url = "https://github.com/nixos/nixpkgs/archive/${rev}.tar.gz";
+            sha256 = "19ahb9ww3r9p1ip9aj7f6rs53qyppbalz3997pzx2vv0aiaq3lz3";
+          }) { }
+        }:
         (pkgs.buildFHSUserEnv {
           name = "global";
           targetPkgs = pkgs: with pkgs; [

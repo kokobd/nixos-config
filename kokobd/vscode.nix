@@ -6,7 +6,8 @@
   };
 
   programs.bash.shellAliases = {
-    "code-server" = "openvscode-server --without-connection-token --host 0.0.0.0";
+    "code-server" =
+      "openvscode-server --without-connection-token --host 0.0.0.0";
   };
 
   programs.vscode = {
@@ -35,9 +36,7 @@
         "/home/kokobd/work/github.com/kokobd/leetcode-rs/src";
       "leetcode.defaultLanguage" = "rust";
       "haskell.plugin.ghcide-completions.config.snippetsOn" = false;
-      "vim.handleKeys" = {
-        "<C-f>" = false;
-      };
+      "vim.handleKeys" = { "<C-f>" = false; };
     };
     extensions = with pkgs.vscode-extensions;
       [
