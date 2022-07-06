@@ -49,6 +49,7 @@
     stylish-haskell
     sysbench
     stress-ng
+    miniserve
   ];
 
   systemd.targets = {
