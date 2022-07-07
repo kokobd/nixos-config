@@ -68,6 +68,7 @@ in {
       "leetcode.defaultLanguage" = "rust";
       "haskell.plugin.ghcide-completions.config.snippetsOn" = false;
       "vim.handleKeys" = { "<C-f>" = false; };
+      "editor.suggest.snippetsPreventQuickSuggestions" = false;
 
       "typescript.tsc.autoDetect" = "off";
     };
