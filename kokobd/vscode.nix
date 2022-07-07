@@ -1,13 +1,44 @@
-{ pkgs, ... }: {
-  services.openvscode-server = {
-    enable = true;
+{ pkgs, ... }:
+let
+  fhsEnv = pkgs.buildFHSUserEnv {
+    name = "global";
+    targetPkgs = pkgs:
+      with pkgs; [
+        coreutils
+        binutils
+        gcc
+        zlib.dev
+        gmp.dev
+        ncurses.dev
+        python
+        nodejs-14_x
+        spdlog
+        cabal-install
+        stack
+        haskellPackages.hoogle
+        haskellPackages.implicit-hie
+        stylish-haskell
+        pre-commit
+        haskell.compiler.ghc923
+        haskell.compiler.ghc902
+        haskell.compiler.ghc8107
+        haskell.compiler.ghc884
+        haskell.compiler.ghc865Binary
+      ];
+    runScript = "node";
+    profile = "export PATH=~/.cabal/bin:~/.local/bin:$PATH";
+  };
+in {
+  services.openvscode-server.default = {
     host = "0.0.0.0";
     port = "3000";
   };
 
-  programs.bash.shellAliases = {
-    "code-server" =
-      "openvscode-server --without-connection-token --host 0.0.0.0";
+  services.openvscode-server.fhs = {
+    host = "0.0.0.0";
+    port = "3001";
+
+    nodeCommand = "${fhsEnv}/bin/global";
   };
 
   programs.vscode = {
