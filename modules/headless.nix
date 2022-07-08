@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ ./gpg.nix ./secrets.nix ./users.nix ./nixtool.nix ];
+  imports = [ ./gpg.nix ./secrets.nix ./users.nix ./nixtool.nix ./openssh.nix ];
 
   system.stateVersion = "22.05";
 
