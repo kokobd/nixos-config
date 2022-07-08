@@ -10,12 +10,8 @@
       efi.efiSysMountPoint = "/boot/efi";
     };
 
-    networking = {
-      hostName = "nuc11";
-      networkmanager.enable = true;
-      firewall.enable = false;
-
-      interfaces.enp89s0 = {
+    networking = let
+      interfaceConf = {
         useDHCP = false;
 
         ipv4.addresses = [{
@@ -23,6 +19,13 @@
           prefixLength = 16;
         }];
       };
+    in {
+      hostName = "nuc11";
+      networkmanager.enable = true;
+      firewall.enable = false;
+
+      # interfaces.enp89s0 = interfaceConf;
+      interfaces.wlo1 = interfaceConf;
 
       defaultGateway = "192.168.31.2";
       nameservers = [ "8.8.8.8" ];
