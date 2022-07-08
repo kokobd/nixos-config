@@ -49,7 +49,7 @@ in {
       "extensions.autoUpdate" = false;
       "editor.fontSize" = 12;
       "editor.minimap.enabled" = false;
-      "editor.tabSize" = 4;
+      "editor.tabSize" = 2;
       "editor.insertSpaces" = true;
       "editor.rulers" = [ 120 ];
       "editor.smoothScrolling" = true;
@@ -59,8 +59,6 @@ in {
       "workbench.tree.indent" = 20;
       "files.autoSave" = "afterDelay";
       "nix.enableLanguageServer" = true;
-      "[json]" = { "editor.tabSize" = 2; };
-      "[nix]" = { "editor.tabSize" = 2; };
       "nix.formatterPath" = "nixfmt";
       "workbench.colorTheme" = "Default Dark+";
       "leetcode.workspaceFolder" =
@@ -69,6 +67,7 @@ in {
       "haskell.plugin.ghcide-completions.config.snippetsOn" = false;
       "vim.handleKeys" = { "<C-f>" = false; };
       "editor.suggest.snippetsPreventQuickSuggestions" = false;
+      "haskell.formattingProvider" = "stylish-haskell";
 
       "typescript.tsc.autoDetect" = "off";
     };
