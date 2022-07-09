@@ -6,6 +6,8 @@ let
       with pkgs; [
         coreutils
         binutils
+        git
+        which
         gcc
         zlib.dev
         gmp.dev
