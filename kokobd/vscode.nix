@@ -84,6 +84,7 @@ in {
         mhutchie.git-graph
         editorconfig.editorconfig
         usernamehw.errorlens
+        coolbear.systemd-unit-file
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-leetcode";
