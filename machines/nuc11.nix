@@ -24,8 +24,8 @@
       networkmanager.enable = true;
       firewall.enable = false;
 
-      # interfaces.enp89s0 = interfaceConf;
-      interfaces.wlo1 = interfaceConf;
+      interfaces.enp89s0 = interfaceConf;
+      # interfaces.wlo1 = interfaceConf;
 
       defaultGateway = "192.168.31.2";
       nameservers = [ "8.8.8.8" ];
