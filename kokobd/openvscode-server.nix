@@ -45,6 +45,12 @@ in {
             '';
           };
 
+          connectionToken = mkOption {
+            type = types.nullOr types.str;
+            default = null;
+            description = "Connection token";
+          };
+
           nodeCommand = mkOption {
             type = types.str;
             default = "${pkgs.nodejs-14_x}/bin/node";
@@ -70,13 +76,18 @@ in {
           Install.WantedBy = [ "default.target" ];
 
           Service = let
+            connectionTokenArg = if cfg.connectionToken == null then
+              "--without-connection-token"
+            else
+              "--connection-token ${cfg.connectionToken}";
+
             wrapper = pkgs.writeScriptBin "openvscode-server-wrapper" ''
               #!${pkgs.bash}/bin/bash
 
               ${cfg.nodeCommand} "${pkgs.openvscode-server}/out/server-main.js" \
                 --port ${cfg.port} \
                 --host ${cfg.host} \
-                --without-connection-token \
+                ${connectionTokenArg} \
                 --server-data-dir=${config.home.homeDirectory}/.openvscode-server
             '';
           in {

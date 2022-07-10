@@ -32,12 +32,12 @@ let
   };
 in {
   services.openvscode-server.default = {
-    host = "0.0.0.0";
+    host = "localhost";
     port = "3000";
   };
 
   services.openvscode-server.fhs = {
-    host = "0.0.0.0";
+    host = "localhost";
     port = "3001";
 
     nodeCommand = "${fhsEnv}/bin/global";
