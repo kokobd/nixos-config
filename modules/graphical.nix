@@ -17,11 +17,11 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  services.xserver.displayManager.autoLogin.user = "kokobd";
-  services.xserver.displayManager.autoLogin.enable = true;
-
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  # auto login
+  # services.xserver.displayManager.autoLogin.user = "kokobd";
+  # services.xserver.displayManager.autoLogin.enable = true;
+  # systemd.services."getty@tty1".enable = false;
+  # systemd.services."autovt@tty1".enable = false;
 
   # Enable sound with pipewire.
   sound.enable = true;
