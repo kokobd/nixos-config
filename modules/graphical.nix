@@ -48,6 +48,7 @@
 
   environment.systemPackages = with pkgs; [
     google-chrome
+    firefox
     keepassxc
     postman
     gnome.gnome-tweaks
