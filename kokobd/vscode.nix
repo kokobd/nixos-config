@@ -7,8 +7,11 @@ let
         coreutils
         binutils
         gnumake
+        nix
         git
+        openssh
         which
+        bash
         gcc
         zlib.dev
         gmp.dev
