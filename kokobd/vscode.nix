@@ -6,6 +6,7 @@ let
       with pkgs; [
         coreutils
         binutils
+        gnumake
         git
         which
         gcc
@@ -16,6 +17,7 @@ let
         python310
         nodejs-14_x
         spdlog
+        miniserve
         cabal-install
         stack
         haskellPackages.hoogle
