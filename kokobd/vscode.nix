@@ -13,6 +13,7 @@ let
         gmp.dev
         ncurses.dev
         python
+        python310
         nodejs-14_x
         spdlog
         cabal-install
