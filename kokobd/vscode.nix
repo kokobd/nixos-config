@@ -9,6 +9,7 @@ let
         gnumake
         nix
         git
+        vim
         openssh
         which
         bash
