@@ -73,4 +73,7 @@
       extraArguments = "-N -R 10022:localhost:22 tencent";
     }];
   };
+
+  virtualisation.docker.enable = true;
+  users.users.kokobd.extraGroups = [ "docker" ];
 }
