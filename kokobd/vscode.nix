@@ -94,6 +94,7 @@ in {
         editorconfig.editorconfig
         usernamehw.errorlens
         coolbear.systemd-unit-file
+        github.vscode-pull-request-github
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-leetcode";
