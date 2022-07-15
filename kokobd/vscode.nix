@@ -33,10 +33,19 @@ let
         haskell.compiler.ghc8107
         haskell.compiler.ghc884
         haskell.compiler.ghc865Binary
+        setghc
       ];
     runScript = "node";
     profile = "export PATH=~/.cabal/bin:~/.local/bin:$PATH";
   };
+
+  setghc = pkgs.writeScriptBin "setghc" ''
+    #!${pkgs.bash}/bin/bash
+
+    set -e
+    rm ~/.local/bin/ghc
+    ln -s /usr/bin/ghc-$1 ~/.local/bin/ghc
+  '';
 in {
   services.openvscode-server.default = {
     host = "localhost";
