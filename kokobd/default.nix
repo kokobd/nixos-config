@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   imports = [
     ./ssh.nix
-    ./fhs.nix
     ./git.nix
     ./vscode.nix
     ./openvscode-server.nix
