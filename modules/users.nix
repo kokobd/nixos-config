@@ -11,6 +11,7 @@
           "$6$QVXhv9ojOXVZATu4$/I/uuCUU.hrbE71HJNSXgyLAeJEYWYMLjkvtsOIXC1kWERP8bsEYuGYIGFgfHKQ.95wqKZxC8pZaMJ8J9b1MB/";
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICJxg+DsNaapEi5sHalphYKkTOxRILlKbnViCesQ1wvs"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM1Btv7KbzDNEMryy2O6lEtkfUzpRpvUhw+pvNlYotBL kokobd@MacBook-Air.local"
         ];
       };
       nixosvmtest = {
