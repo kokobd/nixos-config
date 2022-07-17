@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
-  fhsEnv = pkgs.buildFHSUserEnv {
-    name = "global";
+  fhsEnvArgs = {
+    name = "fhs-global";
     targetPkgs = pkgs:
       with pkgs; [
         coreutils
@@ -10,6 +10,7 @@ let
         nix
         git
         vim
+        neovim
         openssh
         which
         bash
@@ -24,6 +25,7 @@ let
         miniserve
         cabal-install
         stack
+        xclip
         haskellPackages.hoogle
         haskellPackages.implicit-hie
         stylish-haskell
@@ -38,6 +40,9 @@ let
     runScript = "node";
     profile = "export PATH=~/.cabal/bin:~/.local/bin:$PATH";
   };
+
+  fhsEnvForVSCode = pkgs.buildFHSUserEnv fhsEnvArgs;
+  fhsEnvForShell = pkgs.buildFHSUserEnv (fhsEnvArgs // { runScript = "bash"; });
 
   setghc = pkgs.writeScriptBin "setghc" ''
     #!${pkgs.bash}/bin/bash
@@ -56,8 +61,10 @@ in {
     host = "localhost";
     port = "3001";
 
-    nodeCommand = "${fhsEnv}/bin/global";
+    nodeCommand = "${fhsEnvForVSCode}/bin/fhs-global";
   };
+
+  home.packages = [ fhsEnvForShell ];
 
   programs.vscode = {
     enable = true;
