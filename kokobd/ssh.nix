@@ -6,12 +6,12 @@
       enable = true;
       serverAliveInterval = 10;
       serverAliveCountMax = 10;
-      matchBlocks = let identityFile = "/home/kokobd/.ssh/id_rsa";
+      matchBlocks = let identityFile = "/home/kokobd/.ssh/id_ed25519";
       in {
         "github.com" = {
           hostname = "github.com";
           user = "git";
-          identityFile = "/home/kokobd/.ssh/id_ed25519";
+          inherit identityFile;
         };
         tencent = {
           hostname = "119.91.200.28";
@@ -28,11 +28,6 @@
           hostname = "192.168.31.2";
           user = "pi";
           inherit identityFile;
-        };
-        aws = {
-          hostname = "44.207.217.188";
-          user = "kokobd";
-          identityFile = "/home/kokobd/.ssh/id_ed25519";
         };
       };
     };
