@@ -66,12 +66,12 @@
       enable = true;
       passwordAuthentication = false;
     };
-    autossh.sessions = [{
-      name = "public";
-      user = "kokobd";
-      monitoringPort = 0;
-      extraArguments = "-N -R 10022:localhost:22 tencent";
-    }];
+    # autossh.sessions = [{
+    #   name = "public";
+    #   user = "kokobd";
+    #   monitoringPort = 0;
+    #   extraArguments = "-N -R 10022:localhost:22 tencent";
+    # }];
   };
 
   virtualisation.docker.enable = true;
